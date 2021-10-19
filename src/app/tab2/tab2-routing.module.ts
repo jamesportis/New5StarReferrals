@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: Tab2Page,
+  },
+  {
+    path: 'professional-services',
+    loadChildren: () => import('./professional-services/professional-services.module').then( m => m.ProfessionalServicesPageModule)
   }
 ];
 

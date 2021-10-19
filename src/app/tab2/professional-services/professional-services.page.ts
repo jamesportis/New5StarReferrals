@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastController, LoadingController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-professional-services',
+  templateUrl: './professional-services.page.html',
+  styleUrls: ['./professional-services.page.scss'],
 })
-export class Tab1Page {
+export class ProfessionalServicesPage implements OnInit {
 
   url: string = 'https://seetucsonhomes.com/'
   items: any = []
@@ -25,13 +25,13 @@ export class Tab1Page {
   }
   async loadPost(url: string, page, showLoading) {
     const loading = await this.loadingController.create({
-      message: 'Loading Your posts'
+      message: 'Loading Your Referrals'
     });
     if (showLoading) {
       await loading.present();
     }
 
-    const route = this.url + 'wp-json/wp/v2/posts?_embed'
+    const route = this.url + 'wp-json/wp/v2/pages/?categories=1763&per_page=50&orderby=title&order=asc&_embed'
     // set pagination
     if (!page) {
       page = '1';
@@ -105,7 +105,10 @@ export class Tab1Page {
         special: JSON.stringify(post)
       }
     };
-    this.Router.navigate(['post-details'], navigationExtras);
+    this.Router.navigate(['./post-details'], navigationExtras);
+  }
+
+  ngOnInit() {
   }
 
 }

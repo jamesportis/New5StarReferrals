@@ -9,9 +9,218 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Our 5 Star Referrals</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <app-explore-container name="Tab 1 page"></app-explore-container>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list class="post-list">
+
+    <ion-item *ngFor="let item of items" (click)="goToPostDetails()">
+
+      <ion-avatar item-left>
+        <img *ngIf="item._embedded['wp:featuredmedia'][0].source_url"
+          src="{{item._embedded['wp:featuredmedia'][0].source_url}}">
+        <img *ngIf="!item._embedded['wp:featuredmedia'][0].source_url" src="assets/default.png">
+      </ion-avatar>
+      <div>
+        
+        <h2 *ngIf="item.title && item.title.rendered" [innerHTML]="item.title.rendered"></h2>
+
+        <p *ngIf="item.excerpt && item.excerpt.rendered" [innerHTML]="item.excerpt.rendered"></p>
+      </div>
+
+    </ion-item>
+
+  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card href="tabs/tab2/">
+          <img src="/assets/groupPicSm.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >About Us / Contact Us</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+        
+      </ion-col>
+      <ion-col>
+        <ion-card href="tabs/tab2/groups/faces">
+          <img src="/assets/TheFacesOfTucson.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle>The Faces of Tucson</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+        
+      </ion-col>
+     </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card href="tabs/tab2/professional-services">
+          <img src="/assets/mason.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Professional Services</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+        
+      </ion-col>
+      <ion-col>
+        <ion-card href="tabs/tab2/personal-services">
+          <img src="/assets/presidio-hair.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle>Personal Services</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+        
+      </ion-col>
+     </ion-row>
+     <ion-row>
+      <ion-col>
+        <ion-card href="tabs/tab2/real-estate-services">
+          <img src="/assets/stages.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Real Estate Services</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+        
+      </ion-col>
+      <ion-col>
+        <ion-card href="tabs/tab2/client-reviews">
+          <img src="/assets/review1.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Client Reviews</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+      </ion-col>
+     </ion-row>
+     <ion-row>
+      <ion-col>
+        <ion-card href="tabs/tab2/libations">
+          <img src="../assets/libations-coffee.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Libations / Coffee</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card href="tabs/tab2/restaurants">
+          <img src="/assets/ha-long-bay.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Restaurants</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+      </ion-col>
+     </ion-row>
+     <ion-row>
+      <ion-col>
+        <ion-card href="tabs/tab2/local-shops">
+          <img src="/assets/petroglyphsMarta.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Fun Local Shops</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card href="tabs/tab2/accolades">
+          <img src="/assets/music.png" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Tucson Accolades</ion-card-subtitle>
+            
+          </ion-card-header>
+        </ion-card>
+        
+      </ion-col>
+     </ion-row>
+     <ion-row>
+      <ion-col>
+        <ion-card href="tabs/tab2/groups">
+          <img src="/assets/kov.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Fun Groups</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card href="tabs/tab2/events">
+          <img src="/assets/downtown-tucson.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Events</ion-card-subtitle>
+            
+          </ion-card-header>
+        </ion-card>
+        
+      </ion-col>
+     </ion-row>
+     <ion-row>
+      <ion-col>
+        <ion-card href="tabs/tab2/entertainment">
+          <img src="/assets/casino-del-sol.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Entertainment</ion-card-subtitle>
+            
+          </ion-card-header>
+          
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card href="tabs/tab2/active-adults">
+          <img src="/assets/active-adults.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Senior Services</ion-card-subtitle>
+            
+          </ion-card-header>
+        </ion-card>
+        
+      </ion-col>
+     </ion-row>
+     <ion-row>
+      <ion-col>
+        <ion-card href="tabs/tab2/indoor-things-to-do">
+          <img src="/assets/solai.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Indoor Things To Do</ion-card-subtitle>
+            
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card href="tabs/tab2/outdoor-things-to-do">
+          <img src="/assets/catalina.jpg" alt="" />
+          <ion-card-header>
+            <ion-card-subtitle >Outdoor Things To Do</ion-card-subtitle>
+            
+          </ion-card-header>
+        </ion-card>
+        
+      </ion-col>
+     </ion-row>
+     
+     
+  </ion-grid>
 </ion-content>
